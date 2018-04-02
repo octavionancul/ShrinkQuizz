@@ -19,36 +19,36 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
 
-        switch (position){
+        switch (position) {
             case 0:
                 return PartyFragment.newInstance();
             case 1:
                 return MatchFragment.newInstance();
             case 2:
                 return LuckyFragment.newInstance();
-            default :
+            default:
                 return PartyFragment.newInstance();
         }
-      //  return MainActivity.PlaceholderFragment.newInstance(position + 1);
+        //  return MainActivity.PlaceholderFragment.newInstance(position + 1);
     }
 
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 4;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch(position){
+        switch (position) {
             case 0:
                 return "Party";
             case 1:
                 return "Match";
             case 2:
                 return "Lucky";
-                default:
-                    return "Party";
+            default:
+                return "Party";
         }
     }
 }
