@@ -57,7 +57,7 @@ public class MatchFragment extends Fragment {
 
             }
         });
-
+//ffff
         loverSb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
