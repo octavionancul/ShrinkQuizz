@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 
 /**
@@ -47,6 +48,8 @@ public class LuckyFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 mood.setChecked(b);
+                LuckyAnswer la = new LuckyAnswer(b);
+                Toast.makeText(getContext(), String.valueOf(la.isAnswerUser()), Toast.LENGTH_SHORT).show();
             }
         });
 
