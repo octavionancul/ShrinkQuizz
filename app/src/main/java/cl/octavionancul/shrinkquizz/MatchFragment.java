@@ -1,6 +1,8 @@
 package cl.octavionancul.shrinkquizz;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -81,7 +83,24 @@ public class MatchFragment extends Fragment {
                 int user = userSb.getProgress();
                 int lover = loverSb.getProgress();
 
+                showDialog(user,lover);
+
+
             }
         });
+    }
+
+    private void showDialog(int userAge, int loverAge) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle("Resultado");
+        alertDialog.setMessage(new MatchResult(userAge,loverAge).getMatchResult());
+        alertDialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
+
     }
 }

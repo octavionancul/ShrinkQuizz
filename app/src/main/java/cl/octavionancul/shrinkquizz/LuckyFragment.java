@@ -1,6 +1,8 @@
 package cl.octavionancul.shrinkquizz;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,8 +50,10 @@ public class LuckyFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 mood.setChecked(b);
-                LuckyAnswer la = new LuckyAnswer(b);
-                Toast.makeText(getContext(), String.valueOf(la.isAnswerUser()), Toast.LENGTH_SHORT).show();
+            //    String la = new LuckyResult(b).getLuckyResult();
+
+               // Toast.makeText(getContext(), la, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -57,8 +61,24 @@ public class LuckyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 boolean answer = mood.isChecked();
-                Log.d("cb", String.valueOf(answer));
+            //    Log.d("cb", String.valueOf(answer));
+                showDialog(answer);
+
             }
         });
+    }
+
+    private void showDialog(boolean answer) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle("Resultado");
+        alertDialog.setMessage(new LuckyResult(answer).getLuckyResult());
+        alertDialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alertDialog.show();
+
     }
 }
